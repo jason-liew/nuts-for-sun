@@ -11835,7 +11835,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[25]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># 为这个项目导入需要的库</span>
@@ -11929,17 +11929,6 @@ div#notebook {
 
 </div>
 
-<div class="output_area">
-<div class="prompt output_prompt">Out[25]:</div>
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>(34014, 14)</pre>
-</div>
-
-</div>
-
 </div>
 </div>
 
@@ -11963,7 +11952,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[27]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># TODO：总的记录数</span>
@@ -11976,7 +11965,7 @@ div#notebook {
 <span class="n">n_at_most_50k</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="o">.</span><span class="n">income</span> <span class="o">==</span> <span class="s1">&#39;&lt;=50K&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
 <span class="c1"># TODO：被调查者收入大于$50,000所占的比例</span>
-<span class="n">greater_percent</span> <span class="o">=</span> <span class="n">n_greater_50k</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">n_records</span><span class="p">)</span>
+<span class="n">greater_percent</span> <span class="o">=</span> <span class="n">n_greater_50k</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">n_records</span><span class="p">)</span> <span class="o">*</span><span class="mi">100</span>
 
 <span class="c1"># 打印结果</span>
 <span class="k">print</span> <span class="s2">&quot;Total number of records: {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">n_records</span><span class="p">)</span>
@@ -12000,7 +11989,7 @@ div#notebook {
 <pre>Total number of records: 45222
 Individuals making more than $50,000: 11208
 Individuals making at most $50,000: 34014
-Percentage of individuals making more than $50,000: 0.25%
+Percentage of individuals making more than $50,000: 24.78%
 </pre>
 </div>
 </div>
@@ -13050,9 +13039,9 @@ $$ F_{\beta} = (1 + \beta^2) \cdot \frac{precision \cdot recall}{\left( \beta^2 
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>回答： </strong></p>
 <ul>
-<li>高斯朴素贝叶斯,可以用来过滤垃圾邮件（<a href="https://en.wikipedia.org/wiki/Anti-spam_techniques)，优势是">https://en.wikipedia.org/wiki/Anti-spam_techniques)，优势是</a> 模型简单，需要训练时间少，需要的样本少，缺点是需要各特征相互独立。</li>
+<li>高斯朴素贝叶斯,可以用来过滤垃圾邮件（<a href="https://en.wikipedia.org/wiki/Anti-spam_techniques)，优势是">https://en.wikipedia.org/wiki/Anti-spam_techniques)，优势是</a> 模型简单，需要训练时间少，需要的样本少，缺点是需要各特征相互独立,当前数据集符合高斯分布。</li>
 <li>决策树，有用于企业管理中辅助决策，流程管理（<a href="https://en.wikipedia.org/wiki/Operations_management）">https://en.wikipedia.org/wiki/Operations_management）</a> 优势是方便解释结果 缺点是 容易过拟和，当前问题是二分类问题，适合决策树。</li>
-<li>集成方法，可用于网页排名（<a href="https://en.wikipedia.org/wiki/Learning_to_rank）优势是">https://en.wikipedia.org/wiki/Learning_to_rank）优势是</a> 集成多个决策树，避免过拟合问题，缺点是 调整参数稍复杂。</li>
+<li>集成方法，可用于网页排名（<a href="https://en.wikipedia.org/wiki/Learning_to_rank）优势是">https://en.wikipedia.org/wiki/Learning_to_rank）优势是</a> 集成多个决策树，避免过拟合问题，缺点是 调整参数稍复杂，集成方法是以决策树为基础的，当前数据集适合决策树，也可以用集成方法。</li>
 </ul>
 
 </div>
@@ -13173,8 +13162,8 @@ $$ F_{\beta} = (1 + \beta^2) \cdot \frac{precision \cdot recall}{\left( \beta^2 
 
 <span class="c1"># TODO：初始化三个模型</span>
 <span class="n">clf_A</span> <span class="o">=</span> <span class="n">GaussianNB</span><span class="p">()</span>
-<span class="n">clf_B</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span><span class="n">random_state</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">clf_C</span> <span class="o">=</span> <span class="n">GradientBoostingClassifier</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s1">&#39;exponential&#39;</span><span class="p">)</span>
+<span class="n">clf_B</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">clf_C</span> <span class="o">=</span> <span class="n">GradientBoostingClassifier</span><span class="p">()</span>
 <span class="c1"># TODO：计算1%， 10%， 100%的训练数据分别对应多少点</span>
 <span class="n">samples_1</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="mf">0.01</span><span class="p">)</span>
 <span class="n">samples_10</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="mf">0.1</span><span class="p">)</span>
@@ -14017,6 +14006,7 @@ kiRJ6swCQpIkSVJnFhCSJEmSOrOAkCRJktSZBYQkSZKkzv4/DDv7Bi6hX4EAAAAASUVORK5CYII=
 <ul>
 <li>这个模型目标是标注每个人的年收入是否大于$50,000。作出这个最终判断之前需要先进行一些小判断，每个小判断都用这个人的其中一个特征来进行。
 模型训练的过程就是在最初的小判断和最终判断之间串起来一条路线图。预测的过程，是把这个这个人的特征对照这个 路线路，走到最后一个判断，就是结果。</li>
+<li>进行分支时，尽量把同一类别划分到同一个分支来提高效率。同时剪掉因为异常值等原因而添加的分支。</li>
 </ul>
 
 </div>
@@ -14063,10 +14053,8 @@ kiRJ6swCQpIkSVJnFhCSJEmSOrOAkCRJktSZBYQkSZKkzv4/DDv7Bi6hX4EAAAAASUVORK5CYII=
 <span class="n">parameters</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;max_depth&#39;</span> <span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">]}</span>
 
 <span class="c1"># TODO：创建一个fbeta_score打分对象</span>
-<span class="k">def</span> <span class="nf">performance_metric</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span><span class="n">y_pred</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">fbeta_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span><span class="n">y_pred</span><span class="p">,</span><span class="n">beta</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
 
-<span class="n">scorer</span> <span class="o">=</span> <span class="n">make_scorer</span><span class="p">(</span><span class="n">performance_metric</span><span class="p">)</span>
+<span class="n">scorer</span> <span class="o">=</span> <span class="n">make_scorer</span><span class="p">(</span><span class="n">fbeta_score</span><span class="p">,</span><span class="n">beta</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
 
 <span class="c1"># TODO：在分类器上使用网格搜索，使用&#39;scorer&#39;作为评价函数</span>
 <span class="n">grid_obj</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">param_grid</span><span class="o">=</span><span class="n">parameters</span><span class="p">,</span><span class="n">scoring</span><span class="o">=</span><span class="n">scorer</span><span class="p">)</span>
@@ -14207,6 +14195,8 @@ Final F-score on the testing data: 0.7242
 <ul>
 <li>五个特征重要程度依次降低如下：age,education_level,occupation,capital-gain,hours-per-week</li>
 <li>年龄大一点，后面的学历才大点，学历高进入高收入行业，同时工作时间长</li>
+<li>学历高容易进入高收入行业工作</li>
+<li>在高收入行业工作，工作时间会大多比较长</li>
 </ul>
 
 </div>
